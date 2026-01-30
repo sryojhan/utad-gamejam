@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 namespace Player
 {
@@ -9,9 +8,6 @@ namespace Player
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovementController : MonoBehaviour
     {
-        [SerializeField]
-        private ParticleSystem stepParticles;
-
         [SerializeField]
         private float baseMovementSpeed = 5;
 
