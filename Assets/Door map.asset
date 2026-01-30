@@ -24,4 +24,4 @@ MonoBehaviour:
       door_id: main-right
     exit:
       scene: Other other
-      door_id: 
+      door_id: other-left

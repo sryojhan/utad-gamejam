@@ -33,15 +33,18 @@ public class CrossReferencedMap<T>
     }
 
 
-    public T GetPair(T elem)
+    public T GetPairScene(T elem)
     {
-        if (Contains(elem))
+        if (!Contains(elem))
             throw new UnityException("doesnt exist");
 
         if (pairs.ContainsKey(elem))
             return pairs[elem];
 
+
         throw new UnityException("doesnt exist");
     }
+
+
 
 }

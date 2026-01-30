@@ -13,7 +13,7 @@ public class Door : MonoBehaviour, IInteraction
 
     public void Begin()
     {
-        string other = DoorManager.GetPair(id);
+        string other = DoorManager.GetPairScene(id);
 
         SceneManager.LoadScene(other);
     }
