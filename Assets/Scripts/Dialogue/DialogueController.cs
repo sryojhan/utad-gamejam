@@ -17,6 +17,10 @@ public class DialogueController : Singleton<DialogueController>
 
     public Dialogue debugDialogue;
 
+    public GameObject textContainer;
+    public GameObject selectionContainer;
+
+    private bool waitingForSelection;
     private void Awake()
     {
         EnsureInitialised();
@@ -25,6 +29,7 @@ public class DialogueController : Singleton<DialogueController>
     {
         textPlayer.onTextShowed.AddListener(TextEnd);
         text.text = "";
+        waitingForSelection = false;
         gameObject.SetActive(false);
 
         //ShowDialogue(debugDialogue);
@@ -39,6 +44,9 @@ public class DialogueController : Singleton<DialogueController>
         text.text = "";
         speaker.text = "";
 
+        textContainer.SetActive(true);
+        selectionContainer.SetActive(false);
+
         StartCoroutine(RevealAnimation(() => { ShowDialogue(dialogue); }));
     }
 
@@ -52,6 +60,9 @@ public class DialogueController : Singleton<DialogueController>
     {
         currentDialogue = dialogue;
 
+        textContainer.SetActive(true);
+        selectionContainer.SetActive(false);
+
         speaker.text = dialogue.speaker;
         textPlayer.ShowText(currentDialogue.message);
     }
@@ -61,14 +72,23 @@ public class DialogueController : Singleton<DialogueController>
         if (currentDialogue == null)
             throw new NullReferenceException("current dialogue is null");
 
-        Dialogue next = currentDialogue.next;
+        if (currentDialogue.hasOptions)
+        {
+            StartCoroutine(ActivateOptions(currentDialogue.options));
+            return;
+        }
 
-        StartCoroutine(WaitForNext(next));
+        Dialogue next = currentDialogue.next;
+        StartCoroutine(WaitForNext(next, true));
     }
 
-    IEnumerator WaitForNext(Dialogue next)
+    IEnumerator WaitForNext(Dialogue next, bool waitInput)
     {
-        yield return new WaitUntil(InputController.South.IsJustPressed);
+        if (waitInput)
+        {
+            yield return new WaitUntil(InputController.South.IsJustPressed);
+            InputController.South.ConsumeCache();
+        }
 
         if (next != null)
         {
@@ -81,5 +101,36 @@ public class DialogueController : Singleton<DialogueController>
             text.text = "";
             gameObject.SetActive(false);
         }
+    }
+
+
+    IEnumerator ActivateOptions(Dialogue.DialogueOption[] options)
+    {
+        yield return new WaitUntil(InputController.South.IsJustPressed);
+        InputController.South.ConsumeCache();
+        
+        selectionContainer.SetActive(true);
+        textContainer.SetActive(false);
+
+        Transform contentChildLayout = selectionContainer.transform.GetChild(0);
+        foreach (Transform tr in contentChildLayout)
+        {
+            tr.gameObject.SetActive(false);
+        }
+
+
+        for (int i = 0; i < options.Length; i++)
+        {
+            contentChildLayout.GetChild(i).GetComponent<DialogueSelection>().Initialise(options[i], this);
+        }
+
+        waitingForSelection = true;
+    }
+
+
+    public void SelectionChosen(Dialogue next)
+    {
+        waitingForSelection = false;
+        StartCoroutine(WaitForNext(next, false));
     }
 }

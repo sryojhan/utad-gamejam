@@ -12,7 +12,10 @@ public class Progress : Singleton<Progress>
     public static void Unlock(string id)
     {
         if (!instance.currentProgress.Contains(id))
+        {
+            print("Unlock: id");
             instance.currentProgress.Add(id);
+        }
     }
 
     public static bool IsUnlocked(string id)
