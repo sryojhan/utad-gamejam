@@ -77,7 +77,7 @@ namespace Player
                 finalMove = Vector3.zero;
             }
 
-            characterController.Move(finalMove );
+            characterController.Move(finalMove);
 
             Velocity = characterController.velocity;
         }
