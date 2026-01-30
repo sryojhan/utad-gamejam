@@ -22,11 +22,8 @@ namespace Player
 
         private CharacterController characterController;
 
-        private float verticalVelocity;
         private bool canMove = true;
 
-        [Header("Ground Stick")]
-        [SerializeField] private float stickToGroundForce = -10f; // Fuerza fuerte hacia abajo
         [SerializeField] LayerMask groundLayer;
 
         public bool CanMove
@@ -38,7 +35,6 @@ namespace Player
                 if (!value)
                 {
                     MovementDirection = Vector2.zero;
-                    verticalVelocity = 0;
                 }
             }
         }
