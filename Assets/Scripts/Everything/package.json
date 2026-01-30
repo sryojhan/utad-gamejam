@@ -1,0 +1,30 @@
+{
+  "name": "com.yojhan.everything",
+  "version": "1.0.0",
+  "displayName": "Everything",
+  "description": "Everything needed to start a new project",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "keywords": [
+    "utilities",
+    "common",
+    "tools",
+    "extensions",
+    "framework",
+    "everything"
+  ],
+  "author": {
+    "name": "Yojhan",
+    "url": "https://github.com/sryojhan"
+  },
+
+  "samples": [
+    {
+      "displayName": "Easy buttons",
+      "description": "Easy buttons example use case",
+      "path": "Samples~/EasyButtons"
+    }
+  ]
+}
