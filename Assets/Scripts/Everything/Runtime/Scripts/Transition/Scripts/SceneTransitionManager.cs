@@ -1,4 +1,3 @@
-using EasyButtons;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +9,7 @@ namespace SceneTransition
 
     public class SceneTransitionManager : Singleton<SceneTransitionManager>
     {
-        protected override bool DestroyOnLoad => false;
+        protected override bool ConserveBetweenScenes => false;
 
         public int forceTransition = -1;
 
@@ -34,7 +33,7 @@ namespace SceneTransition
             EnsureInitialised();
             ResetMaterial();
         }
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             if (ImTheOne(this))
                 ResetMaterial();
