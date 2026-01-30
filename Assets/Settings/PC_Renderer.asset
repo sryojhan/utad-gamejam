@@ -26,8 +26,8 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
   - {fileID: 7833122117494664109}
-  - {fileID: 3374636283353701018}
-  m_RendererFeatureMap: ad6b866f10d7b46c9a1a71f3d11dd52e
+  - {fileID: 7955315245422469207}
+  m_RendererFeatureMap: ad6b866f10d7b46c57e0a70f11f5666e
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -97,3 +97,18 @@ MonoBehaviour:
     BlurQuality: 0
     Falloff: 100
     SampleCount: -1
+--- !u!114 &7955315245422469207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e1eeeaa7fba944fb8e39c0af65b268, type: 3}
+  m_Name: TranslucentImageBlurSource
+  m_EditorClassIdentifier: LeTai.TranslucentImage.UniversalRP::LeTai.Asset.TranslucentImage.UniversalRP.TranslucentImageBlurSource
+  m_Active: 1
+  renderOrder: 0
+  canvasDisappearWorkaround: 0
