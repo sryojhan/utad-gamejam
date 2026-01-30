@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8ba8ffc3d02da4b8ce5459518c2493, type: 3}
+  m_Name: gossip1
+  m_EditorClassIdentifier: Assembly-CSharp::GossipData
+  title: "Anastasia mat\xF3 a Julia"
+  body: "El mayordomo Jose Luis te ha confiado la informacion de que presencio el
+    asesinato de do\xF1a Julia a manos de la se\xF1orita Anastasia en el almacen
+    tras el tercer arbol"
