@@ -37,6 +37,7 @@ public class DialogueController : Singleton<DialogueController>
         inDialogue = true;
         gameObject.SetActive(true);
         text.text = "";
+        speaker.text = "";
 
         StartCoroutine(RevealAnimation(() => { ShowDialogue(dialogue); }));
     }
