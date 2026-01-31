@@ -18,7 +18,7 @@ public class NPC : MonoBehaviour, IInteraction
 
     public bool IsDone()
     {
-        return DialogueController.instance.IsInDialogue;
+        return !DialogueController.instance.IsInDialogue;
     }
 
     private void Start()

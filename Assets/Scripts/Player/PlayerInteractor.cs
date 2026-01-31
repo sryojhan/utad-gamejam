@@ -71,7 +71,15 @@ namespace Player
             if (target && InputController.South.IsPressed())
             {
                 onGoingInteraction = target.BeginInteraction();
-                onGoingInteraction.Begin();
+
+                if(onGoingInteraction != null)
+                {
+                    onGoingInteraction.Begin();
+                }
+                else
+                {
+                    target.EndInteraction();
+                }
             }
         }
 
@@ -84,7 +92,7 @@ namespace Player
             {
                 target.EndInteraction();
 
-                target = null;
+                //target = null;
                 onGoingInteraction = null;
             }
 

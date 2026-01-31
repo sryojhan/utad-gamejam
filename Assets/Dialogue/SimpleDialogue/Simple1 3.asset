@@ -17,6 +17,15 @@ MonoBehaviour:
   icon: {fileID: 0}
   isLeft: 0
   activateEvent: 
-  hasOptions: 0
-  options: []
+  hasOptions: 1
+  options:
+  - next: {fileID: 11400000, guid: 6e7ad3eca1399f64d8a1ee5a9df8706b, type: 2}
+    displayText: Reirte
+    requisite: 
+  - next: {fileID: 11400000, guid: 43a22ba657afea74098d522b33e9ea44, type: 2}
+    displayText: Consolar
+    requisite: 
+  - next: {fileID: 11400000, guid: 75230de772545164f8b98cfda4667342, type: 2}
+    displayText: Cambiar de tema
+    requisite: basura
   next: {fileID: 0}

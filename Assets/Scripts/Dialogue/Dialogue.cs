@@ -13,7 +13,17 @@ public class Dialogue : ScriptableObject
     public string activateEvent = "";
 
     public bool hasOptions;
-    public Dialogue[] options;
+
+
+    [System.Serializable]
+    public class DialogueOption
+    {
+        public Dialogue next;
+        public string displayText;
+        public string requisite;
+    }
+
+    public DialogueOption[] options;
 
     public Dialogue next;
 }
