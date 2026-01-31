@@ -26,10 +26,16 @@ public class DoorManager : Singleton<DoorManager>
     }
 
 
-    public static string GetPairScene(string current)
+    public static string GetSceneFromDoor(string door)
+    {
+        return instance.doorToScene[door];
+    }
+
+    public static string GetPair(string current)
     {
         string door_id = instance.connections.GetPairScene(current);
-        return instance.doorToScene[door_id];
+        return door_id;
     }
+
 
 }

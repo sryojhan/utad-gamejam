@@ -37,6 +37,26 @@ namespace Player
             InitialiseReferences();
         }
 
+        private void Start()
+        {
+            if (Progress.IsInitialised())
+            {
+                if (!string.IsNullOrEmpty(Progress.instance.last_door_id))
+                {
+                    Door[] roomdoors = FindObjectsByType<Door>(FindObjectsSortMode.None);
+                
+                    foreach(Door door in roomdoors)
+                    {
+                        if(door.id == Progress.instance.last_door_id)
+                        {
+                            transform.position = Utils.Flatten(door.transform.position);
+                            return;
+                        }
+                    }
+                }
+            }    
+        }
+
         private void InitialiseReferences()
         {
             _animator = GetComponentInChildren<Animator>();

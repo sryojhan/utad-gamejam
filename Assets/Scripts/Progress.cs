@@ -9,6 +9,9 @@ public class Progress : Singleton<Progress>
 
     private readonly HashSet<string> currentProgress = new();
 
+
+    public string last_door_id = "";
+
     public static void Unlock(string id)
     {
         if (!instance.currentProgress.Contains(id))
