@@ -149,7 +149,27 @@ public class Motion : Singleton<Motion>
     }
 
 
+    public static MotionHandler Rotate(Transform tr, Quaternion finalRotation, MotionSettings settings = null)
+    {
+        MotionHandler mh = instance.CreateDefaultHandler();
 
+        Quaternion initialRotation = tr.rotation;
+
+        void Begin(GameObject _)
+        {
+            initialRotation = tr.rotation;
+        }
+
+        void Update(GameObject _, float i)
+        {
+            tr.rotation = Quaternion.LerpUnclamped(initialRotation, finalRotation, i);
+        }
+
+        mh.Target(tr.gameObject, begin: Begin, update: Update);
+        mh.Settings(settings);
+
+        return mh;
+    }
 
 
     //TODO: rotation
