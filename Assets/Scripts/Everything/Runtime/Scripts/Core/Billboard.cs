@@ -15,6 +15,7 @@ public class Billboard : MonoBehaviour
         target = Camera.main.transform;
     }
 
+    [Button]
     private void Update()
     {
         switch (mode)
