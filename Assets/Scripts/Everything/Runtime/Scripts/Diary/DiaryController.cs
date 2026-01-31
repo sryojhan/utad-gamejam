@@ -1,11 +1,13 @@
 using UnityEngine;
-
+using UnityEngine.UIElements;
 public class DiaryController : MonoBehaviour
 {
 
     public GameObject diary;
     public GameObject grid;
     public GameObject gossip;
+
+    public bool diaryOn = false;
 
     public Animator diaryAnimator;
 
@@ -20,16 +22,10 @@ public class DiaryController : MonoBehaviour
     {
         if (InputController.West.IsJustPressed())
         {
-            if (diary.activeSelf)
-            {
-                diaryAnimator.SetTrigger("leave");
-            }
-            else
-            {
-                diary.SetActive(true);
-                diaryAnimator.SetTrigger("enter");
-            }
+                diaryOn = !diaryOn;
+                diaryAnimator.SetBool("diaryOn", diaryOn);
         }
+
     }
 
 

@@ -4,5 +4,5 @@ using UnityEngine;
 public class GossipData : ScriptableObject
 {
     public string title;
-    public string body;
+    //public string body;
 }
