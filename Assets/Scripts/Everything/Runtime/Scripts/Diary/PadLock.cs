@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PadLock : MonoBehaviour
 {
-
+    public bool canType = true;
     public TextMeshProUGUI display;
     public int currentNumber;
     public int numbers;
@@ -17,9 +17,13 @@ public class PadLock : MonoBehaviour
 
     public void InsertNumber(int number)
     {
-        currentNumber = currentNumber * 10 + number;
-        numbers++;
-        if (numbers >= 4) StartCoroutine(CheckAnswer());
+        if (canType)
+        {
+            currentNumber = currentNumber * 10 + number;
+            numbers++;
+            display.text = currentNumber.ToString();
+            if (numbers >= 4) StartCoroutine(CheckAnswer());
+        }
     }
 
     public void Success()
@@ -29,6 +33,7 @@ public class PadLock : MonoBehaviour
 
     public IEnumerator CheckAnswer()
     {
+        canType = false;
         yield return new WaitForSeconds(1);
 
         if(currentNumber == password)
@@ -47,7 +52,8 @@ public class PadLock : MonoBehaviour
             yield return new WaitForSeconds(1);
 
             display.text = "";
-
+            display.color = Color.black;
+            canType = true;
         }
 
 
