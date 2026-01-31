@@ -9,6 +9,13 @@ public class Progress : Singleton<Progress>
 
     private readonly HashSet<string> currentProgress = new();
 
+    private void Awake()
+    {
+        if (DestroyIfInitialised(this)) return;
+
+        EnsureInitialised();
+    }
+
 
     public string last_door_id = "";
 
@@ -24,6 +31,24 @@ public class Progress : Singleton<Progress>
     public static bool IsUnlocked(string id)
     {
         return instance.currentProgress.Contains(id);
+    }
+
+
+    readonly Map<object> persistentData = new();
+
+    public void UpdatePersistent(string id, object obj)
+    {
+        persistentData[id] = obj;
+    }
+
+    public bool ContainsPersistent(string id)
+    {
+        return persistentData.ContainsKey(id);
+    }
+
+    public object GetPersistent(string id)
+    {
+        return persistentData[id];
     }
 
 }
