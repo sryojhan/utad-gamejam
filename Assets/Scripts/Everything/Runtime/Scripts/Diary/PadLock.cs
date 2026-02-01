@@ -28,7 +28,11 @@ public class PadLock : MonoBehaviour
 
     public void Success()
     {
-
+        if (PadLockDiary.PadLockDiaryUnlocked == false)
+        {
+            PadLockDiary.PadLockDiaryUnlocked = true;
+            gameObject.GetComponentInParent<PadLockDiary>().ReOpen();
+        }
     }
 
     public IEnumerator CheckAnswer()
