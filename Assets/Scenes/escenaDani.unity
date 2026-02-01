@@ -2912,6 +2912,7 @@ GameObject:
   - component: {fileID: 1390447963}
   - component: {fileID: 1390447962}
   - component: {fileID: 1390447961}
+  - component: {fileID: 1390447966}
   - component: {fileID: 1390447960}
   - component: {fileID: 1390447965}
   m_Layer: 5
@@ -3121,6 +3122,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1390447966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390447959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5e940c091202d4c90586985b3b4994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PngShowUp
+  instance: {fileID: 6251510989917564867, guid: f00ac12ed12be0847b867ca0f4f05615, type: 3}
+  testImg: {fileID: 21300000, guid: 6cc2ee7b3d11391439dd5a06d85daa22, type: 3}
 --- !u!1 &1489568933
 GameObject:
   m_ObjectHideFlags: 0
