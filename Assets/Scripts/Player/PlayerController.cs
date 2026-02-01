@@ -14,16 +14,11 @@ namespace Player
 
         //private AnimationCoordinator _animationCoordinator;
 
-        private Animator _animator;
-        private StopMotionAnimator _stopMotionAnimator;
-
-
         //public static PlayerStateMachine StateMachine => instance._stateMachine;
         public static PlayerMovementController Movement => instance._movementController;
         //public static PlayerCombatController Combat => instance._combatController;
         //public static PlayerCombatTargetSelector TargetSelector => instance._targetSelector;
         //public static PlayerInteractor Interactor => instance._playerInteractor;
-        public static Animator Animator => instance._animator;
         //public static StopMotionAnimator StopMotion => instance._stopMotionAnimator;
 
         //public static AnimationCoordinator AnimationCoordinator => instance._animationCoordinator;
@@ -35,21 +30,19 @@ namespace Player
         {
             EnsureInitialised();
             InitialiseReferences();
-        }
-
-        private void Start()
-        {
+        
             if (Progress.IsInitialised())
             {
                 if (!string.IsNullOrEmpty(Progress.instance.last_door_id))
                 {
-                    Door[] roomdoors = FindObjectsByType<Door>(FindObjectsSortMode.None);
-                
+                    Door[] roomdoors = FindObjectsByType<Door>(FindObjectsSortMode.InstanceID);
+
                     foreach(Door door in roomdoors)
                     {
-                        if(door.id == Progress.instance.last_door_id)
+                        if(string.Equals(door.id, Progress.instance.last_door_id))
                         {
                             transform.position = Utils.Flatten(door.transform.position);
+                            Physics.SyncTransforms();
                             return;
                         }
                     }
@@ -59,8 +52,6 @@ namespace Player
 
         private void InitialiseReferences()
         {
-            _animator = GetComponentInChildren<Animator>();
-
             //_stateMachine = GetComponentInChildren<PlayerStateMachine>();
             _movementController = GetComponentInChildren<PlayerMovementController>();
             //_combatController = GetComponentInChildren<PlayerCombatController>();
